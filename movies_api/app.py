@@ -91,15 +91,14 @@ def create_update_movie():
 
         result = movie_schema.dump(movie_to_update)
 
-        return jsonify(result)
+        return jsonify(result), 201
 
     elif request.method == 'DELETE':
 
-        data = request.args.get('id')
-        movie = Movie.query.get(data)
+        id_movie = request.args.get('id')
+        movie = Movie.query.get(id_movie)
 
-        result = movie_schema.dump(movie)
-
-        return jsonify(result)
+        db.session.delete(movie)
+        db.session.commit
         
-    
+        return jsonify({"message": "Movie Deleted!"}), 202
