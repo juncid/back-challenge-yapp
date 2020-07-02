@@ -1,0 +1,8 @@
+python-dotenv
+mysql-connector-python
+pymysql
+requests
+flask-lambda-python36
+flask-marshmallow
+flask-sqlalchemy
+marshmallow-sqlalchemy
