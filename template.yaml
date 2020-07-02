@@ -21,16 +21,26 @@ Resources:
       Handler: app.app
       Runtime: python3.7
       Events:
-        HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /hello
-            Method: get
-        ListStudents:
+        ListMovies:
           Type: Api
           Properties:
             Path: /movie/list
             Method: get
+        CreateMovie:
+          Type: Api
+          Properties:
+            Path: /movie
+            Method: post
+        UpdateMovie:
+          Type: Api
+          Properties:
+            Path: /movie
+            Method: put
+        DeleteMovie:
+          Type: Api
+          Properties:
+            Path: /movie
+            Method: delete
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
