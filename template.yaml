@@ -11,8 +11,7 @@ Globals:
     Timeout: 10
     Environment:
       Variables:
-        DATABASE_URL: mysql+mysqlconnector://docker:password@localhost:3306/yapp
-
+        DATABASE_URL: mysql+mysqlconnector://backend:password@localhost/movies
 Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction

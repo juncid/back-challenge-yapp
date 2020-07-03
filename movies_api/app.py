@@ -4,7 +4,10 @@ from flask_lambda import FlaskLambda
 from flask import request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from marshmallow import ValidationError, Schema, fields
+from marshmallow import ValidationError
+
+from serializers import MovieSchema
+from utils import initialize_movie
 
 
 app = FlaskLambda(__name__)
@@ -37,35 +40,11 @@ class Movie(db.Model):
 
 
 
-class MovieSchema(Schema):
-    id = fields.Integer(required=False)
-    title = fields.String(required=True)
-    year = fields.String(required=True)
-    age = fields.String(required=True)
-    imbd = fields.String(required=True)
-    rotten_tomatoes = fields.String(required=True)
-    netflix = fields.String(required=True)
-    hulu = fields.String(required=True)
-    prime_video = fields.String(required=True)
-    disney_plus = fields.String(required=True)
-    movie_type = fields.String(required=True)
-    directors = fields.String(required=True)
-    genres = fields.String(required=True)
-    country = fields.String(required=True)
-    language = fields.String(required=True)
-    runtime= fields.String(required=True)
-    
-
-@app.route("/hello")
-def index():
-    
-    return jsonify({"message": "Hello, world!"})
-
-
 @app.route("/movie/list", methods=['GET'])
 def get_movies():
     movies_schema = MovieSchema(many=True)
     all_movies = Movie.query.order_by(Movie.title).all()
+
     result = movies_schema.dump(all_movies)
     return jsonify(result)
 
@@ -76,7 +55,6 @@ def create_update_movie():
     movie_schema = MovieSchema()
 
     if request.method == 'POST':
-        
         data = request.get_json()
 
         try:
@@ -126,23 +104,3 @@ def create_update_movie():
         db.session.commit()
         
         return jsonify({"message": "Movie Deleted!"}), 202
-
-
-def initialize_movie(movie, data):
-        movie.title = data['title']
-        movie.year = data['year']
-        movie.age = data['age']
-        movie.imbd = data['imbd']
-        movie.rotten_tomatoes = data['rotten_tomatoes']
-        movie.netflix = data['netflix']
-        movie.hulu = data['hulu']
-        movie.prime_video = data['prime_video']
-        movie.disney_plus = data['disney_plus']
-        movie.movie_type = data['movie_type']
-        movie.directors = data['directors']
-        movie.genres = data['genres']
-        movie.country = data['country']
-        movie.language = data['language']
-        movie.runtime = data['runtime']
-
-        return movie
