@@ -69,11 +69,64 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
 
 
 - Instalar pip para python3 
-- Configurar virtual enviroment para python
+    Instalar pip3
+    ```bash
+    $ sudo apt install python3-pip
+    ```
+
+    Verificar version de pip3
+    ```bash
+    $ pip3 --version
+    ```
+
+- Instalar virtual enviroment para python
+    Instalar virtualenv usando pip3
+    ```bash
+    $ sudo apt install python3-pip
+    ```
+
+
 - Instalar Docker. - Necesario para ejecutar SAM CLI de manera local.
+    Actualizar apt-get e instalar packages necesarios
+    ```bash
+    $ sudo apt-get update
+
+    $ sudo apt-get install \
+      apt-transport-https \
+      ca-certificates \
+      curl \
+      gnupg-agent \
+      software-properties-common
+    ```
+
+    Añadir llave GCP oficial de Docker
+    ```bash
+    $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    ```
+
+    Añadir repositorio con una version estable de Docker
+    ```bash
+    $ sudo add-apt-repository \
+      "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+      $(lsb_release -cs) \
+      stable"
+    ```
+
+    Instalar Docker Engine
+    ```bash
+     $ sudo apt-get update
+     $ sudo apt-get install docker-ce docker-ce-cli containerd.io
+    ```
+
+    Verificar instalacion de Docker
+     ```bash
+     $ sudo docker run hello-world
+    ```
+
+
 - Instalar Base de datos Mysql 
 - Instalar AWS SAM CLI 
-- Configurar base de datos, crear usuario y base de datos para ejecutar proyecto.
+- Configurar mysql, crear usuario y schema para ejecutar proyecto.
 - Realizar back-up de base de datos utilizando Script.sql
 
 
