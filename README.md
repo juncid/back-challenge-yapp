@@ -18,15 +18,37 @@ Este proyecto contiene tanto el codigo fuente como scripts en SQL que permiten l
   - Script.sql - Script SQl que permite restablecer la base de datos para su uso.
   - data.csv - Archivo que contiene todos los datos de las peliculas en formato csv.
 
-## Requirements
+## Requerimientos
 
-This project assumes the following requirements are met.
+Se utilizará como entorno una maquina virtual con XUbuntu 18.04 LTS desde cero, esto debido a que versiones mas nuevas presentan errores al instalar docker, el cual es un requisito para ejecutar AWS SAM CLI.
 
-- [Python3.7+ ](https://www.python.org/downloads/) - Lambda functions use Python runtime environment.
-- [Docker and docker-compose](https://docs.docker.com/engine/install/) - Needed for AWS SAM CLI and MySQL DataBase.
-- [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html) - AWS Serverless Application Model framework.
+Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian:
 
-## Deployment
+- Instalar Git 
+
+```bash
+$ sudo apt update
+$ sudo apt install git
+```
+
+Verificamos que fue instalado correctamente.
+```bash
+$ git --version
+```
+
+- Actualizar a Python3.7 - Necesario para ejecutar funciones lambda.
+- Instalar pip para python3 
+- Configurar virtual enviroment para python
+- Instalar Docker. - Necesario para ejecutar SAM CLI de manera local.
+- Instalar Base de datos Mysql 
+- Instalar AWS SAM CLI 
+- Configurar base de datos, crear usuario y base de datos para ejecutar proyecto.
+- Realizar back-up de base de datos utilizando Script.sql
+
+
+## Implementación
+
+Se necesita abrir una nueva terminal
 
 - ### Clone this repo
 
