@@ -24,7 +24,7 @@ Se utilizará como entorno una maquina virtual con XUbuntu 18.04 LTS desde cero,
 
 Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por lo cual se debe de abrir una nueva terminal, usar ctrl+alt+t como atajo:
 
-- Instalar Git 
+- ### Instalar Git 
 
     ```bash
     $ sudo apt update
@@ -36,7 +36,7 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
     $ git --version
     ```
 
-- Actualizar a Python3.7 y configurarlo como default - Necesario para ejecutar funciones lambda.
+- ### Actualizar a Python3.7 y configurarlo como default - Necesario para ejecutar funciones lambda.
 
     Verificar version actual de python
     ```bash
@@ -68,7 +68,7 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
     Debe de indicar una version superior a 3.7
 
 
-- Instalar pip para python3 
+- ### Instalar pip para python3 
     Instalar pip3
     ```bash
     $ sudo apt install python3-pip
@@ -79,13 +79,13 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
     $ pip3 --version
     ```
 
-- Instalar virtual enviroment para python
+- ### Instalar virtual enviroment para python
     ```bash
     $ sudo apt install python3-pip
     ```
 
 
-- Instalar Docker. - Necesario para ejecutar SAM CLI de manera local.
+- ### Instalar Docker. - Necesario para ejecutar SAM CLI de manera local.
     
     Actualizar apt-get e instalar packages necesarios
     ```bash
@@ -146,7 +146,7 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
 
 
 
-- Instalar Base de datos Mysql
+- ### Instalar Base de datos Mysql
 
 
     En caso de no entender algun paso, revisar este [tutorial](https://platzi.com/tutoriales/1631-java-basico/226-instalar-mysql-y-workbench-en-linux-ubuntu-1404/) que expone graficamente los mismos pasos a seguir. 
@@ -187,7 +187,8 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
     mysql> exit
     ```
 
-- Instalar AWS SAM CLI 
+
+- ### Instalar AWS SAM CLI 
 
   Para poder instalar SAM CLI necesitaremos Homebrew para linux.
   ```bash
@@ -219,13 +220,38 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
   ```
 
 
-- Configurar mysql, crear usuario y schema para ejecutar proyecto.
-- Realizar back-up de base de datos utilizando Script.sql
+- ### Crear usuario backend en mysql.
+
+  Conectarnos a la base de datos.
+    ```bash
+    $ sudo mysql -u root -p
+    ```
+
+  Crear un nuevo usuario llamado backend con contraseñas en localhost
+    ```bash
+    mysql> CREATE USER 'backend'@'localhost' IDENTIFIED BY 'password';
+    ```
+
+  Otorgar privilegios al usuario creado
+  ```bash
+    mysql> GRANT ALL PRIVILEGES ON * . * TO 'backend'@'localhost';
+    ```
+
+  Salir de la sesion
+  ```bash
+    mysql> exit;
+  ```
 
 
 ## Implementación
 
-Se necesita abrir una nueva terminal
+Se necesita abrir una nueva terminal, solo si esta ya se encuentra cerrada.
+
+Cam
+  ```bash
+    mysql> GRANT ALL PRIVILEGES ON * . * TO 'backend'@'localhost';
+    ```
+
 
 - ### Clone this repo
 
