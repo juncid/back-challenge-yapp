@@ -6,18 +6,17 @@ El siguiente proyecto demuestra una implementación simple de una API Serverless
 
 ## Descripción
 
-This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
+Este proyecto contiene tanto el codigo fuente como scripts en SQL que permiten la ejecución en un entorno local, a continuación se describen estos:
 
-- .env.example - A template that defines the project needed environment variables.
-- template.yaml - A template that defines the application's AWS resources.
-- docker-compose.yml - A containerized MySQL DataBase to help with fast deployment.
-- yapp_backend/ - Code for the application's Lambda function.
-  - tests/ - Unit tests for the application code.
-  - app.py - Serverless API handlers.
-  - db.py - Database connection and session setup.
-  - models.py - Movie SQLAlchemy model.
-  - data.csv - Kaggle data for movies and ratings.
-  - seed.py - Script to populate blank DataBase.
+- .env.example - Un template que contiene la variable de entorno para la coneccion a la base de datos Mysql.
+- template.yaml - Un template que contiene toda la información necesaria para ejecutar la aplicación en un entorno serverless.
+- movies_api/ - Carpeta donde se encuentra todo el codigo de la función lambda.
+  - tests/ - Test unitarios para la aplicacíon. *No fueron creados en esta version
+  - app.py - Aplicacion Flask-Lambda, dentro incluye tambien el modelo Movie. *resolver en siguiente version.
+  - serializers.py - Serializador para el modelo Movie.
+  - utils.py - Funciones comunes que se utilizan en app.py
+  - Script.sql - Script SQl que permite restablecer la base de datos para su uso.
+  - data.csv - Archivo que contiene todos los datos de las peliculas en formato csv.
 
 ## Requirements
 
