@@ -187,8 +187,38 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
     mysql> exit
     ```
 
-
 - Instalar AWS SAM CLI 
+
+  Para poder instalar SAM CLI necesitaremos Homebrew para linux.
+  ```bash
+    $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+  ```
+  
+  Añadir Homebrew a nuestro PATH
+  ```bash
+    $ test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+    $ test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    $ test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+    $ echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+  ```
+
+  Verificar version Homebrew
+  ```bash
+    $ brew --version
+  ```
+
+  Instalar SAM CLI
+   ```bash
+    $ brew tap aws/tap
+    $ brew install aws-sam-cli
+  ```
+
+  Verificar version SAM
+  ```bash
+    $ sam --version
+  ```
+
+
 - Configurar mysql, crear usuario y schema para ejecutar proyecto.
 - Realizar back-up de base de datos utilizando Script.sql
 
