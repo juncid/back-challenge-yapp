@@ -69,7 +69,6 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
 
 
 - ### Instalar pip para python3 
-    Instalar pip3
     ```bash
     $ sudo apt install python3-pip
     ```
@@ -245,74 +244,66 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
 
 ## Implementación
 
-Se necesita abrir una nueva terminal, solo si esta ya se encuentra cerrada.
-
-Cam
+Se necesita abrir una nueva terminal, solo si esta ya se encuentra cerrada,
+junto con cambiar de directorio a Documentos o Documents, segun sea el caso.
   ```bash
-    mysql> GRANT ALL PRIVILEGES ON * . * TO 'backend'@'localhost';
-    ```
+    $ cd Documentos/
+  ```
 
 
-- ### Clone this repo
+- ### Clonar repositorio
 
+Clonar repositorio e ingresar a carpeta back-challenge-yapp
 ```bash
-$ git clone https://github.com/delta575/yapp-backend-dev.git  # Clone this repo
-$ cd yapp-backend-dev  # Change directory to project root folder
+$ git clone https://github.com/juncid/back-challenge-yapp.git  
+$ cd back-challenge-yapp  
 ```
 
-- ### Set environment variables
+- ### Definir variables globales
 
-Edit file following this specifications:
+Copiar el siguiente archivo dentro del directorio back-challenge-yapp, este posee la siguiente variable de entorno:
 
 ```bash
-$ cp .env.example .env  # Copy example
-$ nano .env  # Edit file
+$ cp .env.example .env
 ```
 
-| Variable     | Description                                                                                                                       |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------- |
-| PYTHONPATH   | Changes python root path for SAM compatibility, must be changed to point at "yapp_backend" folder                                 |
-| DATABASE_URL | MySQL URL for connection, must follow the following structure: "mysql+mysqlconnector://{user}:{password}@{host}:{port}/{db_name}" |
+ DATABASE_URL: URL de MySQL para conectarse, se debe seguir la siguiente estructura, "mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/{base_de_datos}".
 
-**Important:** Set the same DATABASE_URL environment variable for SAM Global configs located on `template.yaml` file.
+Es importante recordar que tambien se ocupa la misma variable de entorno para la configuracion global de SAM localizada en el archivo `template.yaml`.
 
-- ### Setup virtual environment and install requirements:
 
-Install development requirements, poetry is used as the preferred package manager.
-Follow the [install instructions](https://python-poetry.org/docs/#installation) for your enviroment.
-
-Then install the project local dependencies:
-
+- ### Configurar entorno virtual e instalar requerimientos:
+Para instalar los requerimientos de python se utilizara virtualenv.
 ```bash
-$ poetry install  # Create virtual env and install dependencies
+$ virtualenv -p python3 .venv
 ```
 
-- ### Deploy MySQL DataBase
-
-If you already have MySQL deployed you can skip this step, just make sure to point the DATABASE_URL env var correctly.
-
-For easy deployment, a MySQL DataBase was containerized with a `docker-compose.yml` which also sets the needed environment variables for authentication.
-
+Activar e instalar requerimientos de python.
 ```bash
-$ docker-compose up --build -d  # Deploys MySQL database as a docker container
+$ source .venv/bin/activate
+$ pip3 install -r movies_api/requirements.txt
 ```
 
-- ### Seed Data
 
-Run the script `seed.py` which will create the Movie table from it's model and populate the DataBase with `data.csv` content.
-data.csv follows [this Kaggle repository](https://www.kaggle.com/ruchi798/movies-on-netflix-prime-video-hulu-and-disney/data#) structure.
+- ### Seed Base de datos
+Se correra el script Script.sql ubicado dentro de la carpeta movies_api en mysql el cual restablecera la base de datos completamente para su uso, este acercamiento se utilizo para generar dos servicios de distinta naturaleza en la misma api.
 
 ```bash
-$ poetry shell  # activate virtual environment
-$ python yapp_backend/seed.py  # run seed script
+$ sudo mysql -u backend -p < movies_api/Script.sql
 ```
 
 - ### Ejecutar SAM CLI en entorno local
 
+Compilar codigo fuente usando SAM build 
 ```bash
-$ sam build --use-container #SAM compilará el codigo fuente para su uso Serverless
-$ sam local start-api --docker-network host #Este comando permite que el container de la aplicación se comunique con la base de datos en el entorno local.
+$ sam build --use-container 
 ```
+
+Iniciar sam en modo local
+```bash
+$ sam local start-api --docker-network host 
+```
+
 
 Nota: Los comandos anteriores, cuando son ejecutados por primera vez, se demoran mas tiempo, debido a que descargan los archivos necesarios para ejecutar el entorno de manera local, por favor, sea paciente.
 
