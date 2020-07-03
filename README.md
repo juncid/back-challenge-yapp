@@ -123,6 +123,27 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
      $ sudo docker run hello-world
     ```
 
+    Configurar Docker para no usar sudo antes de cada comando
+     ```bash
+     $ sudo groupadd docker
+    ```
+    Puede indicar que el grupo ya ha sido creado
+
+    Añadir usuario actual de linux al grupo docker
+     ```bash
+     $ sudo usermod -aG docker nombre_de_nuestro_usuario
+    ```
+    Se debe indicar el nombre que aparece antes del @ en la terminal
+
+    Para que los cambios se ejecuten debemos cerrar la sesion de usuario mediante la interfaz grafica y volvernos a loguear.
+
+    Probar el siguiente comando
+     ```bash
+     $ docker ps
+    ```
+    Si presenta algun error, favor de reiniciar el sistema operativo para que se ejecuten correctamente los cambios.
+    
+
 
 - Instalar Base de datos Mysql
     En caso de no entender algun paso, revisar este [tutorial](https://platzi.com/tutoriales/1631-java-basico/226-instalar-mysql-y-workbench-en-linux-ubuntu-1404/) que expone graficamente los mismos pasos a seguir. 
@@ -158,11 +179,10 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
     ```
     Se debe ingresar la contraseña creada en la actividad anterior.
 
-
-
-
-
-
+    Para salir de la consola de mysql
+    ```bash
+    mysql> exit
+    ```
 
 
 - Instalar AWS SAM CLI 
