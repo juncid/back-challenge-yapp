@@ -269,6 +269,8 @@ $ cp .env.example .env
 
  DATABASE_URL: URL de MySQL para conectarse, se debe seguir la siguiente estructura, "mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/{base_de_datos}".
 
+ PYTHONPATH: Path directorio donde se encuentra ubicado la aplicacion de python. esto es necesario para que SAM pueda tener acceso.
+
 Es importante recordar que tambien se ocupa la misma variable de entorno para la configuracion global de SAM localizada en el archivo `template.yaml`.
 
 
@@ -332,7 +334,6 @@ Endpoint disponibilizados:
 | DELETE | /movie      | Elimina un registro de una pelicula en base de datos, se utiliza el parametro enviado por url como id para seleccionarlo.         | QueryString: id de la pelicula enviado por URL     |
 
 
-## Scripts
+## Siguientes Pasos:
 
-sudo mysql -u backend -p < ../../dumps/DumpMovies.sql
-CREATE SCHEMA `movies` DEFAULT CHARACTER SET utf8 ;
+Para reducir la cantidad de pasos que poseen los requisitos necesarios, se debe evaluar una forma de automatizarlos, esto puede ser mediante script bash, contenedores o archivos Vagrant, para hacer la entrega del servicio lo más rapida y eficiente posible.
