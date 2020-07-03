@@ -124,7 +124,47 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
     ```
 
 
-- Instalar Base de datos Mysql 
+- Instalar Base de datos Mysql
+    En caso de no entender algun paso, revisar este [tutorial] (https://platzi.com/tutoriales/1631-java-basico/226-instalar-mysql-y-workbench-en-linux-ubuntu-1404/) que expone graficamente los mismos pasos a seguir. 
+
+    Instalar Mysql Server
+    ```bash
+     $ sudo apt-get install mysql-server -y
+    ```
+
+    Verificar version Mysql
+    ```bash
+     $ mysql --version
+    ```
+
+    Configurar la base de datos
+    ```bash
+    $ sudo mysql_secure_installation
+    ```
+    Se ejecutara una linea de comandos interactiva donde deberemos responder Y/N a las preguntas.
+
+    Paso 1: Seleccionar Opcion 0 para crear una contraseña debil pero facil de recordar, esta debe tener como minimo 8 caracteres alfanumericos.
+    Paso 2: Seleccionar Y, para crear nuestra contraseña para el usuario root.
+    Paso 3: Seleccionar Y, para eliminar los usuarios anonimos en la base de datos.
+    Paso 4: Seleccionar N, para no deshabilitar el login a la base de datos de manera remota.
+    Paso 5: Seleccionar Y, para remover la base de datos de prueba.
+    Paso 6: Seleccionar Y, para recargar los privilegios de las tablas en la base de datos.
+
+    
+
+    Probar conexion a la base de datos
+    ```bash
+    $ sudo mysql -u root -p
+    ```
+    Se debe ingresar la contraseña creada en la actividad anterior.
+
+
+
+
+
+
+
+
 - Instalar AWS SAM CLI 
 - Configurar mysql, crear usuario y schema para ejecutar proyecto.
 - Realizar back-up de base de datos utilizando Script.sql
