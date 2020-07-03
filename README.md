@@ -142,10 +142,13 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
      $ docker ps
     ```
     Si presenta algun error, favor de reiniciar el sistema operativo para que se ejecuten correctamente los cambios.
-    
+
+
 
 
 - Instalar Base de datos Mysql
+
+
     En caso de no entender algun paso, revisar este [tutorial](https://platzi.com/tutoriales/1631-java-basico/226-instalar-mysql-y-workbench-en-linux-ubuntu-1404/) que expone graficamente los mismos pasos a seguir. 
 
     Instalar Mysql Server
