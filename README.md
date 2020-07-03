@@ -22,21 +22,52 @@ Este proyecto contiene tanto el codigo fuente como scripts en SQL que permiten l
 
 Se utilizará como entorno una maquina virtual con XUbuntu 18.04 LTS desde cero, esto debido a que versiones mas nuevas presentan errores al instalar docker, el cual es un requisito para ejecutar AWS SAM CLI.
 
-Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian:
+Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por lo cual se debe de abrir una nueva terminal, usar ctrl+alt+t como atajo:
 
 - Instalar Git 
 
-```bash
-$ sudo apt update
-$ sudo apt install git
-```
+    ```bash
+    $ sudo apt update
+    $ sudo apt install git -y
+    ```
 
-Verificamos que fue instalado correctamente.
-```bash
-$ git --version
-```
+    Verificamos que fue instalado correctamente.
+    ```bash
+    $ git --version
+    ```
 
-- Actualizar a Python3.7 - Necesario para ejecutar funciones lambda.
+- Actualizar a Python3.7 y configurarlo como default - Necesario para ejecutar funciones lambda.
+
+    Verificar version actual de python
+    ```bash
+    $ python3 -V
+    ```
+    Si esta es menor a 3.7, continuar con los siguientes pasos.
+
+    Instalar python3.7
+    ```bash
+    $ sudo apt-get install python3.7 -y
+    ```
+
+    Agregar python3.6 & python3.7 a update-alternatives
+    ```bash
+    $ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+    $ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2
+    ```
+    
+    Actualizar como default a python3.7
+    ```bash
+    $ sudo update-alternatives --config python3
+    ```
+    Ingresar opcion 2 en consola para seleccionar python3.7
+
+    Verificar nuevamente la version de python
+    ```bash
+    $ python3 -V
+    ```
+    Debe de indicar una version superior a 3.7
+
+
 - Instalar pip para python3 
 - Configurar virtual enviroment para python
 - Instalar Docker. - Necesario para ejecutar SAM CLI de manera local.
