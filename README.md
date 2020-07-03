@@ -80,13 +80,13 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
     ```
 
 - Instalar virtual enviroment para python
-    Instalar virtualenv usando pip3
     ```bash
     $ sudo apt install python3-pip
     ```
 
 
 - Instalar Docker. - Necesario para ejecutar SAM CLI de manera local.
+    
     Actualizar apt-get e instalar packages necesarios
     ```bash
     $ sudo apt-get update
@@ -125,7 +125,7 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
 
 
 - Instalar Base de datos Mysql
-    En caso de no entender algun paso, revisar este [tutorial] (https://platzi.com/tutoriales/1631-java-basico/226-instalar-mysql-y-workbench-en-linux-ubuntu-1404/) que expone graficamente los mismos pasos a seguir. 
+    En caso de no entender algun paso, revisar este [tutorial](https://platzi.com/tutoriales/1631-java-basico/226-instalar-mysql-y-workbench-en-linux-ubuntu-1404/) que expone graficamente los mismos pasos a seguir. 
 
     Instalar Mysql Server
     ```bash
@@ -150,7 +150,7 @@ Se realizarán los siguientes pasos, pensando en un entorno Ubuntu/Debian, por l
     Paso 5: Seleccionar Y, para remover la base de datos de prueba.
     Paso 6: Seleccionar Y, para recargar los privilegios de las tablas en la base de datos.
 
-    
+
 
     Probar conexion a la base de datos
     ```bash
